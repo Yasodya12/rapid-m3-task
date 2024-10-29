@@ -18,10 +18,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final JwtAuthorizationFilter jwtAuthorizationFilter;
     private final UserService adminService;
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
-    public SecurityConfig(UserService adminService, JwtAuthorizationFilter jwtAuthorizationFilter) {
+
+    public SecurityConfig(UserService adminService, JwtAuthorizationFilter jwtAuthorizationFilter,CustomAuthenticationEntryPoint customAuthenticationEntryPoint) {
         this.adminService = adminService;
         this.jwtAuthorizationFilter = jwtAuthorizationFilter;
+        this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
 
     }
 
@@ -39,6 +42,7 @@ public class SecurityConfig {
                             requestMatchers("/pay").hasAuthority("ADMIN").
                             requestMatchers("/account").hasAuthority("ADMIN").
                             requestMatchers("/transaction").hasAuthority("ADMIN").
+                            requestMatchers("/tasks").hasAuthority("ADMIN").
 
                             requestMatchers("/withdraw").hasAuthority("USER")
 

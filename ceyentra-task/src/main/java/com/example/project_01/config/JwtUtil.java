@@ -49,10 +49,13 @@ public class JwtUtil {
 
     public Claims resolveClaims(HttpServletRequest req) {
         try {
+
             String token = resolveToken(req);
             if (token != null) {
+                System.out.println("after resvlve");
                 return parseJwtClaims(token);
             }
+
             return null;
         } catch (ExpiredJwtException ex) {
             req.setAttribute("expired", ex.getMessage());
