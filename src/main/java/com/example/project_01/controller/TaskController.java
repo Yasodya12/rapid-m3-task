@@ -1,6 +1,7 @@
 package com.example.project_01.controller;
 
 import com.example.project_01.dto.TaskDTO;
+import com.example.project_01.entity.enums.Status;
 import com.example.project_01.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,8 +23,16 @@ public class TaskController {
 
     @GetMapping
     public List<TaskDTO> getAllTasks() {
-        System.out.println("get function stared");
+        System.out.println("get function stared get");
         return taskService.getAllTasks();
+    }
+
+    @GetMapping("/{status}")
+    public List<TaskDTO> getFilterdTasks(@PathVariable Status status) {
+        System.out.println("gethhhh function stared"+status+" after");
+        List<TaskDTO> filterdTasks = taskService.getFilterdTasks(status);
+        System.out.println(filterdTasks);
+        return filterdTasks;
     }
 
 

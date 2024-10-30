@@ -2,6 +2,7 @@ package com.example.project_01.service.impl;
 
 import com.example.project_01.dto.TaskDTO;
 import com.example.project_01.entity.Task;
+import com.example.project_01.entity.enums.Status;
 import com.example.project_01.repo.TaskRepo;
 import com.example.project_01.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,12 @@ public class TaskServiceImpl implements TaskService {
         return toDTOList(taskRepo.findAll());
     }
 
+    @Override
+    public List<TaskDTO> getFilterdTasks(Status status) {
+        List<Task> byStatus = taskRepo.findByStatus(status);
+       return toDTOList(byStatus);
 
+    }
 
 
     public TaskDTO createTask(TaskDTO taskDTO) {
