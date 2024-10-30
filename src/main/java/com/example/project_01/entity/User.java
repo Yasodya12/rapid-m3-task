@@ -1,7 +1,7 @@
 package com.example.project_01.entity;
 
 import com.example.project_01.entity.embeded.Address;
-import com.example.project_01.entity.enums.LoanTypes;
+
 import com.example.project_01.entity.enums.UserTypes;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

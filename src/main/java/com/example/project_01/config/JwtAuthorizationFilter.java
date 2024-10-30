@@ -38,6 +38,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         try {
             String accessToken = jwtUtil.resolveToken(request);
             if (accessToken == null ) {
+                System.out.println("token is null");
                 filterChain.doFilter(request, response);
                 return;
             }

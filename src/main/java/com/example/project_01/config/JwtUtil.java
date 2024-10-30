@@ -64,7 +64,11 @@ public class JwtUtil {
     }
 
     public String resolveToken(HttpServletRequest request) {
+        System.out.println("before get header");
+
         String bearerToken = request.getHeader(TOKEN_HEADER);
+
+
         if (bearerToken != null && bearerToken.startsWith(TOKEN_PREFIX)) {
             return bearerToken.substring(TOKEN_PREFIX.length());
         }

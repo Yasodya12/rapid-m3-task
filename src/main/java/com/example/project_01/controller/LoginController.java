@@ -26,7 +26,7 @@ public class LoginController {
         System.out.println("LoginController");
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity login(@RequestBody LoginReq req){
        System.out.println("LogIn controller funtion started");
        String token = service.search(req.getEmail(), req.getPassword());

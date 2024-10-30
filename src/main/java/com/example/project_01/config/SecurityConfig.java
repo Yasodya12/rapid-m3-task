@@ -34,8 +34,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> {
 
                     request.requestMatchers("/log").permitAll().
+                            requestMatchers("/tasks").permitAll().
+                            requestMatchers("/tasks/**").permitAll().
                             requestMatchers("/loan").hasAuthority("ADMIN").
-                            requestMatchers("/tasks").hasAuthority("ADMIN").
+
                             requestMatchers("/pay").hasAuthority("ADMIN").
                             requestMatchers("/account").hasAuthority("ADMIN").
                             requestMatchers("/transaction").hasAuthority("ADMIN").
